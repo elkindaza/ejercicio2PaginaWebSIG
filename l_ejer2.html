@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #map {
+            width: 100%;
+            height: 580px;
+            box-shadow: 5px 5px 5px #888;
+        }
+    </style>
+    <script src=" https://unpkg.com/leaflet@1.6.0/dist/leaflet.js "></script>
+    <link rel="stylesheet" href=" https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+
+</head>
+
+<body>
+    <div id='map'>
+        <script>
+            var map = L.map('map', {
+                center: [1.6181058937930153, -75.6095327486999],
+                zoom: 15,
+            });
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution:
+                    '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+                    + 'contributors',
+                maxZoom: 18
+            }).addTo(map);
+
+            var universidad = L.marker(
+                [1.620196165156243, -75.6042948713385]
+            ).addTo(map)
+                .bindPopup('Universidad de la Amazonia')
+                .openPopup();
+
+            var alcaldia = L.marker(
+                [1.6150912865673839, -75.61388145829925]
+            ).addTo(map)
+                .bindPopup('Alcaldia municipal')
+                .openPopup();
+
+            var circulo = L.circle([1.6150912865673839, -75.61388145829925], 500, {
+                color: 'red',
+                fillColor: '#f03',
+                fillOpacity: 0.5
+            }).addTo(map);
+            var plazasantander = L.marker(
+                [1.6149806748202447, -75.61330704081695]
+            ).addTo(map)
+                .bindPopup('Plaza Santander')
+                .openPopup();
+
+            var poligonosantander = L.polygon([
+                [1.615339, -75.613006],
+                [1.614723, -75.612834],
+                [1.61454, -75.613457],
+                [1.615152, -75.613634]
+            ]).addTo(map)
+                .bindPopup('Parque');
+
+           
+            var casa = [[1.622398,-75.599346],
+            [1.622655,-75.600966],
+            [1.622463, -75.601134],
+            [1.622541, -75.601522],
+            [1.622649, -75.601847],
+            [1.622789, -75.602204],
+            [1.622222, -75.602882],
+            [1.622093, -75.603165],
+            [1.622001, -75.603643],
+            [1.621934, -75.604337],
+            [1.621735, -75.604463],
+            [1.621552, -75.604596]];
+
+
+            var polyline = L.polyline(casa)
+                .addTo(map)
+                .bindPopup('Casa');
+
+
+        </script>
+    </div>
+</body>
+
+</html>
